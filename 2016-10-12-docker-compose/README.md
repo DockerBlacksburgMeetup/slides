@@ -2,6 +2,7 @@
 
 ## Basics Overview - Docker Compose
 
+- Presenter - [Michael Irwin](https://github.com/mikesir87)
 - Slides - [PDF](docker-compose-basics.pdf) | [Google Drive](https://docs.google.com/presentation/d/1WHhq_EuLgwUpnbfDwPyxU3LfljNj0MUt3ia0QohGWCY/edit?usp=sharing)
 - [Demo Repo](https://github.com/mikesir87/docker-compose-demo)
 
@@ -15,6 +16,7 @@ We wrapped up the basics talk by updating our Docker Compose file to build the i
 
 ## Use Case - Rackspace Webmail Development with Docker Compose
 
+- Presenter - [Jon Armstrong](https://github.com/jon-armstrong)
 - Slides - [PDF](rse_docker_compose.pdf)
 - [Demo Repo](https://github.com/jon-armstrong/docker-compose-demo)
 
