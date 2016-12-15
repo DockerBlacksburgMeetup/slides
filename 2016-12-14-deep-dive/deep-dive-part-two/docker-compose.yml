@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  slides:
+    image: hairyhenderson/remarkjs
+    volumes:
+      - ./slides.md:/slides.md
+      - ./index.html.tmpl:/index.html.tmpl
+      - ./images:/usr/share/nginx/html/images
+      - ./styles.css:/usr/share/nginx/html/styles.css
+    environment:
+      - TITLE=Deep Dive - Container Runtimes
+      - HIGHLIGHT_LINES=true
+      - HIGHLIGHT_SPANS=true
+      - RATIO=16:9
+    ports:
+      - 8080:80
