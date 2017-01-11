@@ -1,0 +1,54 @@
+body {
+    line-height: 1.8em;
+}
+
+.remark-slide-number { display: none; }
+
+.remark-slide-content:after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 20px;
+    background-color: #0db7ed;
+}
+
+code.json {
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.remark-slide-content.inverse:after, .remark-slide-content.full-screen-image:after {
+    background-color: transparent;
+}
+
+blockquote {
+    font-size: 2em;
+    line-height: 1.3em;
+}
+
+.inverse {
+    background-color: #333;
+    color: white;
+}
+
+img {
+    max-height: 90%;
+    max-width: 90%;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 50px;
+}
+
+.pull-right { float: right; }
+
+.remark-code {
+    margin-bottom: 50px;
+}
+
+iframe {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}

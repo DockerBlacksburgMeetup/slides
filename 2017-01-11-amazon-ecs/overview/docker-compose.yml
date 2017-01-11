@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  slides:
+    image: hairyhenderson/remarkjs
+    volumes:
+      - ./slides.md:/usr/share/nginx/html/slides.md
+      - ./index.html.tmpl:/index.html.tmpl
+      - ./images:/usr/share/nginx/html/images
+      - ./styles.css:/usr/share/nginx/html/styles.css
+    environment:
+      - TITLE=Amazon ECS Overview
+      - HIGHLIGHT_LINES=true
+      - HIGHLIGHT_SPANS=true
+      - RATIO=16:9
+      - DEV_MODE=true
+    ports:
+      - 8080:80
