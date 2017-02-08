@@ -1,0 +1,75 @@
+body {
+    line-height: 1.8em;
+    font-family: 'Open Sans';
+}
+
+h1, h2, h3 {
+    font-family: 'Raleway';
+}
+
+h2 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.remark-slide-number { display: none; }
+
+.remark-slide-content {
+    font-size: 28px;
+    line-height: 1.6em;
+    padding: 1em 3em 1em 3em;
+}
+
+.remark-inline-code {
+    background: #f6fcfe;
+    border: 2px solid #0db7ed;
+    padding: 0px 5px;
+    font-size: .9em;
+}
+
+.remark-slide-content:after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 20px;
+    background-color: #0db7ed;
+}
+
+.remark-code-line {
+    line-height: 1.4em;
+}
+
+code.json {
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.remark-slide-content.inverse:after, .remark-slide-content.full-screen-image:after {
+    background-color: transparent;
+}
+
+blockquote {
+    font-size: 1.5em;
+    line-height: 1.3em;
+}
+
+.inverse {
+    background-color: #333;
+    color: white;
+}
+
+img {
+    max-height: 90%;
+    max-width: 90%;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 50px;
+}
+
+.pull-right { float: right; }
+
+.full-size-bg {
+    background-size: contain;
+}

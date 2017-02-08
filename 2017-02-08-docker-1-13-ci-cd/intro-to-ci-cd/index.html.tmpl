@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{.Env.TITLE}}</title>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <script src="remark-{{getenv "REMARK_VER"}}.min.js"></script>
+    <script>
+      var slideshow = remark.create({
+        sourceUrl: 'slides.md',
+        ratio: '{{getenv "RATIO" "4:3"}}',
+        navigation: {
+          scroll: false,
+          touch: true,
+          click: false
+        },
+        highlightStyle: '{{getenv "HIGHLIGHT_STYLE" "default"}}',
+        highlightSpans: true,
+        highlightLines: {{getenv "HIGHLIGHT_LINES" "false"}}
+      })
+    </script>
+  </body>
+</html>
