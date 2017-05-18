@@ -1,0 +1,31 @@
+version: '3.1'
+
+services:
+  app:
+    image: mikesir87/lamp-demo-app
+    ports:
+      - 80:80
+    networks:
+      - qa-application
+      - lamp-backend
+    labels:
+      - "deployment.appGroup=groceries"
+      - "deployment.name=groceries"
+      - "deployment.url=http://groceries.$HOST/"
+      - "deployment.vcs.ref=refs/heads/ISSUE-1234"
+    deploy:
+      replicas: 2
+      labels:
+        - "traefik.backend=groceries"
+        - "traefik.frontend.rule=Host:groceries.$HOST"
+        - "traefik.port=80"
+  db:
+    image: mikesir87/lamp-demo-mysql
+    networks:
+      - lamp-backend
+
+networks:
+  qa-application:
+    external: true
+  lamp-backend:
+    driver: overlay

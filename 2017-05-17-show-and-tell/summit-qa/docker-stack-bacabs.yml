@@ -1,0 +1,68 @@
+version: '3.2'
+
+services:
+  traefik:
+    image: traefik:1.2-alpine
+    command: --web --web.readonly --entryPoints='Name:http Address::80' --defaultentrypoints=http --docker --docker.swarmmode --logLevel=DEBUG
+    ports:
+      - "80:80"
+      - "8080:8080"
+    networks:
+      - qa-application
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /dev/null:/traefik.toml
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+
+  dashboard:
+    image: bacabs/dashboard
+    networks:
+      - qa-application
+      - qa-backend
+    deploy:
+      labels:
+        - "traefik.backend=bacabs"
+        - "traefik.docker.network=qa-application"
+        - "traefik.frontend.rule=Host:$HOST"
+        - "traefik.port=3000"
+
+  redis:
+    image: redis:3.0
+    command: redis-server --appendonly yes
+    networks:
+      - qa-backend
+    volumes:
+      - redis_data:/data
+
+  docker-event-watcher:
+    image: bacabs/docker-event-watcher
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    deploy:
+      mode: global
+    networks:
+      - qa-backend
+
+  gitlab-webhook-receiver:
+    image: bacabs/gitlab-webhook-receiver
+    networks:
+      - qa-application
+      - qa-backend
+    labels:
+      - "traefik.backend=gitlab"
+      - "traefik.docker.network=qa-application"
+      - "traefik.frontend.rule=Host:gitlab-webhook-receiver.$HOST"
+      - "traefik.port=80"
+
+volumes:
+  redis_data:
+    driver: local
+
+networks:
+  qa-application:
+    external: true
+  qa-backend:
+    driver: overlay

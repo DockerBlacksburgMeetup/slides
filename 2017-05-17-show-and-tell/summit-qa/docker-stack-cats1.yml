@@ -1,0 +1,23 @@
+version: "3.1"
+
+services:
+  app:
+    image: mikesir87/cats:1.0
+    networks:
+      - qa-application
+    labels:
+      - "deployment.appGroup=cats"
+      - "deployment.name=cats-1.0"
+      - "deployment.url=http://cats1.$HOST/"
+      - "deployment.issue.identifier=ISSUE-1234"
+      - "deployment.issue.url=https://some.jira.instace/browse/ISSUE-1234"
+      - "deployment.vcs.ref=refs/heads/ISSUE-1234"
+    deploy:
+      labels:
+        - "traefik.backend=cats-1"
+        - "traefik.frontend.rule=Host:cats1.$HOST"
+        - "traefik.port=5000"
+
+networks:
+  qa-application:
+    external: true
